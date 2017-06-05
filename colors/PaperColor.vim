@@ -295,7 +295,7 @@ let s:TRANSPARENT_BACKGROUND = s:Theme_Options('transparent_background') == 1
 
 " }}}
 
-" Language Options: {{{
+" Laanguage Options: {{{
 " Part of user-config options
 let s:language_options = {}
 if has_key(s:options, 'language')
@@ -1062,68 +1062,6 @@ fun! s:set_highlightings_variable()
     call s:HL("cFunction", s:foreground, "", "")
   endif
 
-  " CPP highlighting
-  call s:HL("cppBoolean", s:navy, "", "")
-  call s:HL("cppSTLnamespace", s:purple, "", "")
-  call s:HL("cppSTLexception", s:pink, "", "")
-  call s:HL("cppSTLfunctional", s:foreground, "", s:bold)
-  call s:HL("cppSTLiterator", s:foreground, "", s:bold)
-  call s:HL("cppExceptions", s:red, "", "")
-  call s:HL("cppStatement", s:blue, "", "")
-  call s:HL("cppStorageClass", s:navy, "", s:bold)
-  call s:HL("cppAccess",s:blue, "", "")
-  if s:Language_Options('cpp.highlight_standard_library') == 1
-    call s:HL("cppSTLconstant", s:green, "", s:bold)
-    call s:HL("cppSTLtype", s:pink, "", s:bold)
-    call s:HL("cppSTLfunction", s:blue, "", "")
-    call s:HL("cppSTLios", s:olive, "", s:bold)
-  else
-    call s:HL("cppSTLconstant", s:foreground, "", "")
-    call s:HL("cppSTLtype", s:foreground, "", "")
-    call s:HL("cppSTLfunction", s:foreground, "", "")
-    call s:HL("cppSTLios", s:foreground, "", "")
-  endif
-  " call s:HL("cppSTL",s:blue, "", "")
-
-
-  " Lex highlighting
-  call s:HL("lexCFunctions", s:foreground, "", "")
-  call s:HL("lexAbbrv", s:purple, "", "")
-  call s:HL("lexAbbrvRegExp", s:aqua, "", "")
-  call s:HL("lexAbbrvComment", s:comment, "", "")
-  call s:HL("lexBrace", s:navy, "", "")
-  call s:HL("lexPat", s:aqua, "", "")
-  call s:HL("lexPatComment", s:comment, "", "")
-  call s:HL("lexPatTag", s:orange, "", "")
-  " call s:HL("lexPatBlock", s:foreground, "", s:bold)
-  call s:HL("lexSlashQuote", s:foreground, "", "")
-  call s:HL("lexSep", s:foreground, "", "")
-  call s:HL("lexStartState", s:orange, "", "")
-  call s:HL("lexPatTagZone", s:olive, "", s:bold)
-  call s:HL("lexMorePat", s:olive, "", s:bold)
-  call s:HL("lexOptions", s:olive, "", s:bold)
-  call s:HL("lexPatString", s:olive, "", "")
-
-  " Yacc highlighting
-  call s:HL("yaccNonterminal", s:navy, "", "")
-  call s:HL("yaccDelim", s:orange, "", "")
-  call s:HL("yaccInitKey", s:aqua, "", "")
-  call s:HL("yaccInit", s:navy, "", "")
-  call s:HL("yaccKey", s:purple, "", "")
-  call s:HL("yaccVar", s:aqua, "", "")
-
-  " NASM highlighting
-  call s:HL("nasmStdInstruction", s:navy, "", "")
-  call s:HL("nasmGen08Register", s:aqua, "", "")
-  call s:HL("nasmGen16Register", s:aqua, "", "")
-  call s:HL("nasmGen32Register", s:aqua, "", "")
-  call s:HL("nasmGen64Register", s:aqua, "", "")
-  call s:HL("nasmHexNumber", s:purple, "", "")
-  call s:HL("nasmStorage", s:aqua, "", s:bold)
-  call s:HL("nasmLabel", s:pink, "", "")
-  call s:HL("nasmDirective", s:blue, "", s:bold)
-  call s:HL("nasmLocalLabel", s:orange, "", "")
-
   " GAS highlighting
   call s:HL("gasSymbol", s:pink, "", "")
   call s:HL("gasDirective", s:blue, "", s:bold)
@@ -1133,12 +1071,6 @@ fun! s:set_highlightings_variable()
   call s:HL("gasRegisterX86", s:blue, "", "")
   call s:HL("gasOpcode_P6_Base", s:navy, "", "")
   call s:HL("gasDirectiveStore", s:foreground, "", s:bold)
-
-  " MIPS highlighting
-  call s:HL("mipsInstruction", s:pink, "", "")
-  call s:HL("mipsRegister", s:navy, "", "")
-  call s:HL("mipsLabel", s:aqua, "", s:bold)
-  call s:HL("mipsDirective", s:purple, "", s:bold)
 
   " Shell/Bash highlighting
   call s:HL("bashStatement", s:foreground, "", s:bold)
@@ -1322,20 +1254,6 @@ fun! s:set_highlightings_variable()
   call s:HL("goDeclType", s:blue, "", "")
   call s:HL("goBuiltins", s:purple, "", "")
 
-  " Systemtap Highlighting
-  " call s:HL("stapBlock", s:comment, "", "none")
-  call s:HL("stapComment", s:comment, "", "none")
-  call s:HL("stapProbe", s:aqua, "", s:bold)
-  call s:HL("stapStat", s:navy, "", s:bold)
-  call s:HL("stapFunc", s:foreground, "", "")
-  call s:HL("stapString", s:olive, "", "")
-  call s:HL("stapTarget", s:navy, "", "")
-  call s:HL("stapStatement", s:pink, "", "")
-  call s:HL("stapType", s:pink, "", s:bold)
-  call s:HL("stapSharpBang", s:comment, "", "")
-  call s:HL("stapDeclaration", s:pink, "", "")
-  call s:HL("stapCMacro", s:blue, "", "")
-
   " DTrace Highlighting
   call s:HL("dtraceProbe", s:blue, "", "")
   call s:HL("dtracePredicate", s:purple, "", s:bold)
@@ -1371,17 +1289,6 @@ fun! s:set_highlightings_variable()
   call s:HL("plantumlLifecycle", s:aqua, "", "")
   call s:HL("plantumlParticipant", s:foreground, "", s:bold)
 
-
-  " Haskell Highlighting
-  call s:HL("haskellType", s:aqua, "", s:bold)
-  call s:HL("haskellIdentifier", s:orange, "", s:bold)
-  call s:HL("haskellOperators", s:pink, "", "")
-  call s:HL("haskellWhere", s:foreground, "", s:bold)
-  call s:HL("haskellDelimiter", s:aqua, "", "")
-  call s:HL("haskellImportKeywords", s:pink, "", "")
-  call s:HL("haskellStatement", s:purple, "", s:bold)
-
-
   " SQL/MySQL Highlighting
   call s:HL("sqlStatement", s:pink, "", s:bold)
   call s:HL("sqlType", s:blue, "", s:bold)
@@ -1394,21 +1301,6 @@ fun! s:set_highlightings_variable()
   call s:HL("mysqlKeyword", s:pink, "", "")
   call s:HL("mysqlOperator", s:aqua, "", "")
   call s:HL("mysqlSpecial", s:green, "", s:bold)
-
-
-  " Octave/MATLAB Highlighting
-  call s:HL("octaveVariable", s:foreground, "", "")
-  call s:HL("octaveDelimiter", s:pink, "", "")
-  call s:HL("octaveQueryVar", s:foreground, "", "")
-  call s:HL("octaveSemicolon", s:purple, "", "")
-  call s:HL("octaveFunction", s:navy, "", "")
-  call s:HL("octaveSetVar", s:blue, "", "")
-  call s:HL("octaveUserVar", s:foreground, "", "")
-  call s:HL("octaveArithmeticOperator", s:aqua, "", "")
-  call s:HL("octaveBeginKeyword", s:purple, "", s:bold)
-  call s:HL("octaveElseKeyword", s:purple, "", s:bold)
-  call s:HL("octaveEndKeyword", s:purple, "", s:bold)
-  call s:HL("octaveStatement", s:pink, "", "")
 
   " Ruby Highlighting
   call s:HL("rubyModule", s:navy, "", s:bold)
@@ -1436,26 +1328,10 @@ fun! s:set_highlightings_variable()
   call s:HL("rubyExceptional", s:purple, "", s:bold)
   call s:HL("rubyBoolean", s:green, "", s:bold)
 
-  " Fortran Highlighting
-  call s:HL("fortranUnitHeader", s:foreground, "", s:bold)
-  call s:HL("fortranType", s:pink, "", s:bold)
-  call s:HL("fortranStructure", s:blue, "", s:bold)
-  call s:HL("fortranStorageClass", s:navy, "", s:bold)
-  call s:HL("fortranStorageClassR", s:navy, "", s:bold)
-  call s:HL("fortranKeyword", s:pink, "", "")
-  call s:HL("fortranReadWrite", s:blue, "", "")
-  call s:HL("fortranIO", s:navy, "", "")
-
   " R Highlighting
   call s:HL("rType", s:blue, "", "")
   call s:HL("rArrow", s:pink, "", "")
   call s:HL("rDollar", s:blue, "", "")
-
-  " XXD Highlighting
-  call s:HL("xxdAddress", s:navy, "", "")
-  call s:HL("xxdSep", s:pink, "", "")
-  call s:HL("xxdAscii", s:pink, "", "")
-  call s:HL("xxdDot", s:aqua, "", "")
 
   " PHP Highlighting
   call s:HL("phpIdentifier", s:foreground, "", "")
@@ -1489,56 +1365,6 @@ fun! s:set_highlightings_variable()
   call s:HL("perlSubName", s:aqua, "", s:bold)
   call s:HL("perlSpecialString", s:olive, "", s:bold)
 
-  " Pascal Highlighting
-  call s:HL("pascalType", s:pink, "", s:bold)
-  call s:HL("pascalStatement", s:blue, "", s:bold)
-  call s:HL("pascalPredefined", s:pink, "", "")
-  call s:HL("pascalFunction", s:foreground, "", "")
-  call s:HL("pascalStruct", s:navy, "", s:bold)
-  call s:HL("pascalOperator", s:aqua, "", s:bold)
-  call s:HL("pascalPreProc", s:green, "", "")
-  call s:HL("pascalAcces", s:navy, "", s:bold)
-
-  " Lua Highlighting
-  call s:HL("luaFunc", s:foreground, "", "")
-  call s:HL("luaIn", s:blue, "", s:bold)
-  call s:HL("luaFunction", s:pink, "", "")
-  call s:HL("luaStatement", s:blue, "", "")
-  call s:HL("luaRepeat", s:blue, "", s:bold)
-  call s:HL("luaCondStart", s:purple, "", s:bold)
-  call s:HL("luaTable", s:aqua, "", s:bold)
-  call s:HL("luaConstant", s:green, "", s:bold)
-  call s:HL("luaElse", s:purple, "", s:bold)
-  call s:HL("luaCondElseif", s:purple, "", s:bold)
-  call s:HL("luaCond", s:purple, "", s:bold)
-  call s:HL("luaCondEnd", s:purple, "", "")
-
-  " Clojure highlighting:
-  call s:HL("clojureConstant", s:blue, "", "")
-  call s:HL("clojureBoolean", s:orange, "", "")
-  call s:HL("clojureCharacter", s:olive, "", "")
-  call s:HL("clojureKeyword", s:pink, "", "")
-  call s:HL("clojureNumber", s:orange, "", "")
-  call s:HL("clojureString", s:olive, "", "")
-  call s:HL("clojureRegexp", s:purple, "", "")
-  call s:HL("clojureRegexpEscape", s:pink, "", "")
-  call s:HL("clojureParen", s:aqua, "", "")
-  call s:HL("clojureVariable", s:olive, "", "")
-  call s:HL("clojureCond", s:blue, "", "")
-  call s:HL("clojureDefine", s:blue, "", s:bold)
-  call s:HL("clojureException", s:red, "", "")
-  call s:HL("clojureFunc", s:navy, "", "")
-  call s:HL("clojureMacro", s:blue, "", "")
-  call s:HL("clojureRepeat", s:blue, "", "")
-  call s:HL("clojureSpecial", s:blue, "", s:bold)
-  call s:HL("clojureQuote", s:blue, "", "")
-  call s:HL("clojureUnquote", s:blue, "", "")
-  call s:HL("clojureMeta", s:blue, "", "")
-  call s:HL("clojureDeref", s:blue, "", "")
-  call s:HL("clojureAnonArg", s:blue, "", "")
-  call s:HL("clojureRepeat", s:blue, "", "")
-  call s:HL("clojureDispatch", s:aqua, "", "")
-
   " Dockerfile Highlighting
   " @target https://github.com/docker/docker/tree/master/contrib/syntax/vim
   call s:HL("dockerfileKeyword", s:blue, "", "")
@@ -1567,10 +1393,6 @@ fun! s:set_highlightings_variable()
   call s:HL("qmlReserved", s:purple, "", "")
   call s:HL("qmlBindingProperty", s:navy, "", "")
   call s:HL("qmlType", s:navy, "", "")
-
-  " Dosini Highlighting
-  call s:HL("dosiniHeader", s:pink, "", "")
-  call s:HL("dosiniLabel", s:blue, "", "")
 
   " Mail highlighting
   call s:HL("mailHeaderKey", s:blue, "", "")
@@ -1757,12 +1579,12 @@ fun! s:apply_highlightings()
 
 endfun
 
-"}}}
+"}}a}
 
 " =========================== TESTING =====================================
 " Run unit testing :call g:PaperColor_Test()
 
-" UNIT TESTING: {{{
+" aUNIT TESTING: {{{
 
 fun! s:test_report(test, verbose)
   if a:test[1] != ''
@@ -1970,7 +1792,7 @@ endfun
 " endif
 " }}}
 
-" INTERMEDIATE FILES GENERATOR: {{{
+"a INTERMEDIATE FILES GENERATOR: {{{
 
 fun! s:writeToFile(message, file)
   echo a:file
